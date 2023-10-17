@@ -7,7 +7,7 @@ public class GameEngine {
     private String characterName = "";
 
     //private static instance of this class
-    private static GameEngine gameEngineInstance;
+    private static GameEngine gameEngineInstance = new GameEngine();
 
     //private constructor
     private GameEngine(){

@@ -1,6 +1,7 @@
 package package1;
 
 import package1.singleton.GameEngine;
+import package1.singleton.GameEngineEnum;
 
 public class Main {
 
@@ -17,5 +18,9 @@ public class Main {
         //difficulties
         //1. multithreading
         //solution -> call constructor on the instance of GameEngine class
+
+        GameEngineEnum gameEngineEnum = GameEngineEnum.INSTANCE;
+        GameEngineEnum gameEngineEnum1 = GameEngineEnum.INSTANCE;
+        System.out.println(gameEngineEnum==gameEngineEnum1);
     }
 }
