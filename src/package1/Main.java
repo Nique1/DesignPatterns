@@ -1,36 +1,21 @@
 package package1;
 
-import package1.notification.TvNews;
-import package1.notification.InternetNews;
-import package1.notification.RadioNews;
-import package1.forecast.WeatherForecast;
+import package1.singleton.GameEngine;
 
 public class Main {
 
     public static void main(String[] args) {
-        WeatherForecast weatherForecast = new WeatherForecast(25, 1012);
+        //cannot create GameEngine object using constructor -> private constructor
+//        GameEngine gameEngine = new GameEngine();
 
-        RadioNews radioNews = new RadioNews();
-        TvNews tvNews = new TvNews();
-        InternetNews internetNews = new InternetNews();
+        GameEngine gameEngine = GameEngine.gameInstance();
 
-        weatherForecast.registerObserver(radioNews);
-        weatherForecast.registerObserver(tvNews);
-        weatherForecast.registerObserver(internetNews);
+        GameEngine gameEngine1 = GameEngine.gameInstance();
 
-        weatherForecast.notifyObservers();
-        System.out.println("");
+        System.out.println(gameEngine == gameEngine1);
 
-        weatherForecast.unregisterObserver(tvNews);
-        System.out.println("");
-
-        weatherForecast.notifyObservers();
-        System.out.println("");
-
-        weatherForecast.updateForecast(20,12);
-
-
-
-
+        //difficulties
+        //1. multithreading
+        //solution -> call constructor on the instance of GameEngine class
     }
 }
