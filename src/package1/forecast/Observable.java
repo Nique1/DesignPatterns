@@ -1,4 +1,4 @@
-package package1.order;
+package package1.forecast;
 
 import package1.notification.Observer;
 

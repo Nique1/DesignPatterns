@@ -1,27 +1,36 @@
 package package1;
 
-import package1.notification.Email;
-import package1.notification.MobileApp;
-import package1.notification.TextMessage;
-import package1.order.Order;
-import package1.order.OrderStatus;
+import package1.notification.TvNews;
+import package1.notification.InternetNews;
+import package1.notification.RadioNews;
+import package1.forecast.WeatherForecast;
 
 public class Main {
 
     public static void main(String[] args) {
-        Order order = new Order(120L, OrderStatus.RECEIVED);
+        WeatherForecast weatherForecast = new WeatherForecast(25, 1012);
 
-        TextMessage textMessage = new TextMessage();
-        Email email = new Email();
-        MobileApp mobileApp = new MobileApp();
+        RadioNews radioNews = new RadioNews();
+        TvNews tvNews = new TvNews();
+        InternetNews internetNews = new InternetNews();
 
-        order.registerObserver(textMessage);
-        order.registerObserver(email);
-        order.registerObserver(mobileApp);
+        weatherForecast.registerObserver(radioNews);
+        weatherForecast.registerObserver(tvNews);
+        weatherForecast.registerObserver(internetNews);
 
-        order.notifyObservers();
+        weatherForecast.notifyObservers();
         System.out.println("");
-        order.changeOrderStatus(OrderStatus.SEND);
+
+        weatherForecast.unregisterObserver(tvNews);
+        System.out.println("");
+
+        weatherForecast.notifyObservers();
+        System.out.println("");
+
+        weatherForecast.updateForecast(20,12);
+
+
+
 
     }
 }
