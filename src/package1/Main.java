@@ -1,27 +1,28 @@
 package package1;
 
-import package1.notification.Email;
-import package1.notification.MobileApp;
-import package1.notification.TextMessage;
-import package1.order.Order;
-import package1.order.OrderStatus;
+import package1.house.BigHouseBuilder;
+import package1.house.House;
+import package1.house.HouseDirector;
+import package1.house.SmallHouseBuilder;
 
 public class Main {
 
     public static void main(String[] args) {
-        Order order = new Order(120L, OrderStatus.RECEIVED);
+        SmallHouseBuilder smallHouseBuilder = new SmallHouseBuilder();
+        BigHouseBuilder bigHouseBuilder = new BigHouseBuilder();
 
-        TextMessage textMessage = new TextMessage();
-        Email email = new Email();
-        MobileApp mobileApp = new MobileApp();
+        HouseDirector smallHouseDirector = new HouseDirector(smallHouseBuilder);
+        smallHouseDirector.buildHouse();
 
-        order.registerObserver(textMessage);
-        order.registerObserver(email);
-        order.registerObserver(mobileApp);
+        HouseDirector bigHouseDirector = new HouseDirector(bigHouseBuilder);
+        bigHouseDirector.buildHouse();
 
-        order.notifyObservers();
-        System.out.println("");
-        order.changeOrderStatus(OrderStatus.SEND);
+        House smallHouse = smallHouseDirector.getHouse();
+        House bigHouse = bigHouseDirector.getHouse();
+
+        System.out.println(smallHouse);
+        System.out.println(bigHouse);
+
 
     }
 }
