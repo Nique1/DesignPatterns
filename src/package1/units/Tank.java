@@ -1,7 +1,7 @@
-package package1;
+package package1.units;
 
 public class Tank extends Unit {
-    public Tank(int hp, int exp, int dmgDone) {
+    Tank(int hp, int exp, int dmgDone) {
         super(hp, exp, dmgDone);
     }
 }

@@ -1,7 +1,7 @@
-package package1;
+package package1.units;
 
 public class Rifleman extends Unit {
-    public Rifleman(int hp, int exp, int dmgDone) {
+    Rifleman(int hp, int exp, int dmgDone) {
         super(hp, exp, dmgDone);
     }
 }
