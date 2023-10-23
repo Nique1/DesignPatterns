@@ -1,22 +1,21 @@
 package package1;
 
-import package1.cars.BMWModel;
-import package1.cars.Car;
-import package1.cars.FordModel;
+import package1.flyweight.Destroyer;
+import package1.flyweight.Rifleman;
+import package1.flyweight.TeslTank;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        Factory commonwealthFactory = new CommonWealthFactory();
-        Factory continentalFactory = new ContinentalFactory();
-
-        Car bmw = commonwealthFactory.buildBMW(BMWModel.E60);
-        System.out.println(bmw);
-
-
-        Car ford = continentalFactory.buildFord(FordModel.FOCUS);
-        System.out.println(ford);
-
+        List<Object> activeUnit = new ArrayList<>();
+        for (int i = 0; i <10_000_000 ; i++) {
+            activeUnit.add(new TeslTank(0,0));
+            activeUnit.add(new Rifleman(0,0));
+            activeUnit.add(new Destroyer(0,0));
+        }
 
 
     }
