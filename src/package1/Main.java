@@ -1,18 +1,22 @@
 package package1;
 
-import package1.units.*;
+import package1.cars.BMWModel;
+import package1.cars.Car;
+import package1.cars.FordModel;
 
 public class Main {
 
     public static void main(String[] args) {
-       Factory blueFactory = new BlueFactory();
-       Factory redFactory = new RedFactory();
+        Factory commonwealthFactory = new CommonWealthFactory();
+        Factory continentalFactory = new ContinentalFactory();
 
-       MechanizedUnit redTank = redFactory.createMechanizedUnit(UnitType.TANK);
-       InfantryUnit redInfantry = redFactory.createInfantryUnit(UnitType.RIFLEMAN);
+        Car bmw = commonwealthFactory.buildBMW(BMWModel.E60);
+        System.out.println(bmw);
 
-       InfantryUnit blueTank = blueFactory.createInfantryUnit(UnitType.TANK);
-       MechanizedUnit blueRifleman = blueFactory.createMechanizedUnit(UnitType.TANK);
+
+        Car ford = continentalFactory.buildFord(FordModel.FOCUS);
+        System.out.println(ford);
+
 
 
     }
